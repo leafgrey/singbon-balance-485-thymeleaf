@@ -1,0 +1,221 @@
+<!--<!DOCTYPE html>-->
+<!--<html class="x-admin-sm" lang="zh" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--	<meta charset="UTF-8">-->
+<!--	<title>欢迎页面-X-admin2.2</title>-->
+<!--	<meta name="renderer" content="webkit">-->
+<!--	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+<!--	<meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>-->
+<!--	<link rel="stylesheet" href="/x-admin/css/font.css">-->
+<!--	<link rel="stylesheet" href="/x-admin/css/xadmin.css">-->
+<!--	<script src="/x-admin/lib/layui/layui.js" charset="utf-8"></script>-->
+<!--	<script type="text/javascript" src="/x-admin/js/xadmin.js"></script>-->
+<!--	&lt;!&ndash; 让IE8/9支持媒体查询，从而兼容栅格 &ndash;&gt;-->
+<!--	&lt;!&ndash;[if lt IE 9]>-->
+<!--	<script src="/x-admin/js/html5.min.js" type="text/javascript"></script>-->
+<!--	<script src="/x-admin/js/respond.min.js"></script>-->
+<!--	<![endif]&ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="layui-fluid">-->
+<!--	<div class="layui-row layui-col-space15">-->
+<!--		<div class="layui-col-md12">-->
+<!--			<div class="layui-card">-->
+<!--				<div class="layui-card-body ">-->
+<!--					<blockquote class="layui-elem-quote">欢迎管理员：-->
+<!--						<span class="x-red">test</span>！当前时间:2018-04-25 20:50:53-->
+<!--					</blockquote>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="layui-col-md12">-->
+<!--			<div class="layui-card">-->
+<!--				<div class="layui-card-header">数据统计</div>-->
+<!--				<div class="layui-card-body ">-->
+<!--					<ul class="layui-row layui-col-space10 layui-this x-admin-carousel x-admin-backlog">-->
+<!--						<li class="layui-col-md2 layui-col-xs6">-->
+<!--							<a href="javascript:void(0)" class="x-admin-backlog-body">-->
+<!--								<h3>文章数</h3>-->
+<!--								<p>-->
+<!--									<cite>66</cite></p>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="layui-col-md2 layui-col-xs6">-->
+<!--							<a href="javascript:void(0)" class="x-admin-backlog-body">-->
+<!--								<h3>会员数</h3>-->
+<!--								<p>-->
+<!--									<cite>12</cite></p>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="layui-col-md2 layui-col-xs6">-->
+<!--							<a href="javascript:void(0)" class="x-admin-backlog-body">-->
+<!--								<h3>回复数</h3>-->
+<!--								<p>-->
+<!--									<cite>99</cite></p>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="layui-col-md2 layui-col-xs6">-->
+<!--							<a href="javascript:void(0)" class="x-admin-backlog-body">-->
+<!--								<h3>商品数</h3>-->
+<!--								<p>-->
+<!--									<cite>67</cite></p>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="layui-col-md2 layui-col-xs6">-->
+<!--							<a href="javascript:void(0)" class="x-admin-backlog-body">-->
+<!--								<h3>文章数</h3>-->
+<!--								<p>-->
+<!--									<cite>67</cite></p>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="layui-col-md2 layui-col-xs6 ">-->
+<!--							<a href="javascript:void(0)" class="x-admin-backlog-body">-->
+<!--								<h3>文章数</h3>-->
+<!--								<p>-->
+<!--									<cite>6766</cite></p>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--					</ul>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="layui-col-sm6 layui-col-md3">-->
+<!--			<div class="layui-card">-->
+<!--				<div class="layui-card-header">下载-->
+<!--					<span class="layui-badge layui-bg-cyan layuiadmin-badge">月</span></div>-->
+<!--				<div class="layui-card-body  ">-->
+<!--					<p class="layuiadmin-big-font">33,555</p>-->
+<!--					<p>新下载-->
+<!--						<span class="layuiadmin-span-color">10%-->
+<!--                                    <i class="layui-inline layui-icon layui-icon-face-smile-b"></i></span>-->
+<!--					</p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="layui-col-sm6 layui-col-md3">-->
+<!--			<div class="layui-card">-->
+<!--				<div class="layui-card-header">下载-->
+<!--					<span class="layui-badge layui-bg-cyan layuiadmin-badge">月</span></div>-->
+<!--				<div class="layui-card-body ">-->
+<!--					<p class="layuiadmin-big-font">33,555</p>-->
+<!--					<p>新下载-->
+<!--						<span class="layuiadmin-span-color">10%-->
+<!--                                    <i class="layui-inline layui-icon layui-icon-face-smile-b"></i></span>-->
+<!--					</p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="layui-col-sm6 layui-col-md3">-->
+<!--			<div class="layui-card">-->
+<!--				<div class="layui-card-header">下载-->
+<!--					<span class="layui-badge layui-bg-cyan layuiadmin-badge">月</span></div>-->
+<!--				<div class="layui-card-body ">-->
+<!--					<p class="layuiadmin-big-font">33,555</p>-->
+<!--					<p>新下载-->
+<!--						<span class="layuiadmin-span-color">10%-->
+<!--                                    <i class="layui-inline layui-icon layui-icon-face-smile-b"></i></span>-->
+<!--					</p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="layui-col-sm6 layui-col-md3">-->
+<!--			<div class="layui-card">-->
+<!--				<div class="layui-card-header">下载-->
+<!--					<span class="layui-badge layui-bg-cyan layuiadmin-badge">月</span></div>-->
+<!--				<div class="layui-card-body ">-->
+<!--					<p class="layuiadmin-big-font">33,555</p>-->
+<!--					<p>新下载-->
+<!--						<span class="layuiadmin-span-color">10%-->
+<!--							<i class="layui-inline layui-icon layui-icon-face-smile-b"></i>-->
+<!--						</span>-->
+<!--					</p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		&lt;!&ndash;数据信息&ndash;&gt;-->
+<!--		<div class="layui-col-md12">-->
+<!--			<div class="layui-card">-->
+<!--				<div class="layui-card-header">部门营业日统计</div>-->
+<!--				<div class="layui-card-body ">-->
+<!--					<table class="layui-table">-->
+<!--						<thead>-->
+<!--						<tr>-->
+<!--							<th>部门</th>-->
+<!--							<th>日期</th>-->
+<!--							<th>金额</th>-->
+<!--							<th>次数</th>-->
+<!--						</tr>-->
+<!--						</thead>-->
+<!--						<tbody>-->
+<!--						&lt;!&ndash;						<c:forEach var="d" items="${deptDayTurnoverList}" varStatus="s">&ndash;&gt;-->
+<!--						&lt;!&ndash;							<tr>&ndash;&gt;-->
+<!--						&lt;!&ndash;								<td>${d.groupname}</td>&ndash;&gt;-->
+<!--						&lt;!&ndash;								<td>${d.ADate}</td>&ndash;&gt;-->
+<!--						&lt;!&ndash;								<td>${d.AmountAllDay}</td>&ndash;&gt;-->
+<!--						&lt;!&ndash;								<td>${d.RvsAmountAllDay}</td>&ndash;&gt;-->
+<!--						&lt;!&ndash;							</tr>&ndash;&gt;-->
+<!--						&lt;!&ndash;						</c:forEach>&ndash;&gt;-->
+<!--						&lt;!&ndash;						<th th:text="${infoStat.index}"></th>&ndash;&gt;-->
+<!--						&lt;!&ndash;						<th th:text="${infoStat.count}"></th>&ndash;&gt;-->
+<!--						&lt;!&ndash;						<th th:text="${infoStat.size}"></th>&ndash;&gt;-->
+<!--						&lt;!&ndash;						<th th:text="${infoStat.even}"></th>&ndash;&gt;-->
+<!--						&lt;!&ndash;						<th th:text="${infoStat.odd}"></th>&ndash;&gt;-->
+<!--						&lt;!&ndash;						<th th:text="${infoStat.first}"></th>&ndash;&gt;-->
+<!--						&lt;!&ndash;						<th th:text="${infoStat.last}"></th>&ndash;&gt;-->
+<!--						<tr th:each="info,infoStat : ${deptDayTurnoverList}">-->
+<!--							<td th:text="${info.groupname}"></td>-->
+<!--							<td th:text="${info.ADate}"></td>-->
+<!--							<th th:text="${info.AmountAllDay}"></th>-->
+<!--							<th th:text="${info.RvsAmountAllDay}"></th>-->
+<!--						</tr>-->
+<!--						</tbody>-->
+<!--					</table>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		&lt;!&ndash;系统信息&ndash;&gt;-->
+<!--		<div class="layui-col-md12">-->
+<!--			<div class="layui-card">-->
+<!--				<div class="layui-card-header">系统信息</div>-->
+<!--				<div class="layui-card-body ">-->
+<!--					<table class="layui-table">-->
+<!--						<tbody>-->
+<!--						<tr>-->
+<!--							<th>xxx版本</th>-->
+<!--							<td>1.0.180420</td>-->
+<!--						</tr>-->
+<!--						<tr>-->
+<!--							<th>服务器地址</th>-->
+<!--							<td></td>-->
+<!--						</tr>-->
+<!--						</tbody>-->
+<!--					</table>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		&lt;!&ndash;开发团队&ndash;&gt;-->
+<!--		<div class="layui-col-md12">-->
+<!--			<div class="layui-card">-->
+<!--				<div class="layui-card-header">开发团队</div>-->
+<!--				<div class="layui-card-body ">-->
+<!--					<table class="layui-table">-->
+<!--						<tbody>-->
+<!--						<tr>-->
+<!--							<th>版权所有</th>-->
+<!--							<td>-->
+<!--								<a href="javascript:void(0)" target="_blank">访问官网</a>-->
+<!--							</td>-->
+<!--						</tr>-->
+<!--						</tbody>-->
+<!--					</table>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		&lt;!&ndash;<style id="welcome_style"></style>&ndash;&gt;-->
+<!--		<div class="layui-col-md12">-->
+<!--			<blockquote class="layui-elem-quote layui-quote-nm">感谢layui,百度Echarts,jquery,本系统由x-admin提供技术支持。</blockquote>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

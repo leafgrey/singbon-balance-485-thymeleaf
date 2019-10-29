@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xb.mapper.HcConsumeClctGrpMapper">
+	<resultMap id="BaseResultMap"
+	           type="com.xb.domain.HcConsumeClctGrp">
+		<!--@mbg.generated-->
+		<!--@Table dbo.hcConsumeClctGrp-->
+		<id column="Adate"
+		    property="adate"/>
+		<id column="GrpNo1"
+		    property="grpno1"/>
+		<result column="server"
+		        property="server"/>
+		<result column="Amount1"
+		        property="amount1"/>
+		<result column="RvsAmount1"
+		        property="rvsamount1"/>
+		<result column="Amount2"
+		        property="amount2"/>
+		<result column="RvsAmount2"
+		        property="rvsamount2"/>
+		<result column="Amount3"
+		        property="amount3"/>
+		<result column="RvsAmount3"
+		        property="rvsamount3"/>
+		<result column="Amount4"
+		        property="amount4"/>
+		<result column="RvsAmount4"
+		        property="rvsamount4"/>
+		<result column="AmountOther"
+		        property="amountother"/>
+		<result column="RvsAmountOther"
+		        property="rvsamountother"/>
+		<result column="AmountAllDay"
+		        property="amountallday"/>
+		<result column="RvsAmountAllDay"
+		        property="rvsamountallday"/>
+		<result column="groupname"
+		        property="groupname"/>
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!--@mbg.generated-->
+		Adate, GrpNo1, server, Amount1, RvsAmount1, Amount2, RvsAmount2, Amount3, RvsAmount3,
+		Amount4, RvsAmount4, AmountOther, RvsAmountOther, AmountAllDay, RvsAmountAllDay,
+		groupname
+	</sql>
+	<select id="selectByPrimaryKey"
+	        parameterType="map"
+	        resultMap="BaseResultMap">
+		<!--@mbg.generated-->
+		select
+		<include refid="Base_Column_List"/>
+		from dbo.hcConsumeClctGrp
+		where Adate = #{adate}
+		and GrpNo1 = #{grpno1}
+	</select>
+	<delete id="deleteByPrimaryKey"
+	        parameterType="map">
+		<!--@mbg.generated-->
+		delete from dbo.hcConsumeClctGrp
+		where Adate = #{adate}
+		and GrpNo1 = #{grpno1}
+	</delete>
+	<insert id="insert"
+	        parameterType="com.xb.domain.HcConsumeClctGrp">
+		<!--@mbg.generated-->
+		insert into dbo.hcConsumeClctGrp (Adate, GrpNo1, server, Amount1, RvsAmount1, Amount2, RvsAmount2,
+		Amount3, RvsAmount3, Amount4, RvsAmount4, AmountOther, RvsAmountOther,
+		AmountAllDay, RvsAmountAllDay, groupname)
+		values (#{adate}, #{grpno1}, #{server}, #{amount1}, #{rvsamount1}, #{amount2}, #{rvsamount2},
+		#{amount3}, #{rvsamount3}, #{amount4}, #{rvsamount4}, #{amountother}, #{rvsamountother},
+		#{amountallday}, #{rvsamountallday}, #{groupname})
+	</insert>
+	<insert id="insertSelective"
+	        parameterType="com.xb.domain.HcConsumeClctGrp">
+		<!--@mbg.generated-->
+		insert into dbo.hcConsumeClctGrp
+		<trim prefix="("
+		      suffix=")"
+		      suffixOverrides=",">
+			<if test="adate != null">
+				Adate,
+			</if>
+			<if test="grpno1 != null">
+				GrpNo1,
+			</if>
+			<if test="server != null">
+				server,
+			</if>
+			<if test="amount1 != null">
+				Amount1,
+			</if>
+			<if test="rvsamount1 != null">
+				RvsAmount1,
+			</if>
+			<if test="amount2 != null">
+				Amount2,
+			</if>
+			<if test="rvsamount2 != null">
+				RvsAmount2,
+			</if>
+			<if test="amount3 != null">
+				Amount3,
+			</if>
+			<if test="rvsamount3 != null">
+				RvsAmount3,
+			</if>
+			<if test="amount4 != null">
+				Amount4,
+			</if>
+			<if test="rvsamount4 != null">
+				RvsAmount4,
+			</if>
+			<if test="amountother != null">
+				AmountOther,
+			</if>
+			<if test="rvsamountother != null">
+				RvsAmountOther,
+			</if>
+			<if test="amountallday != null">
+				AmountAllDay,
+			</if>
+			<if test="rvsamountallday != null">
+				RvsAmountAllDay,
+			</if>
+			<if test="groupname != null">
+				groupname,
+			</if>
+		</trim>
+		<trim prefix="values ("
+		      suffix=")"
+		      suffixOverrides=",">
+			<if test="adate != null">
+				#{adate},
+			</if>
+			<if test="grpno1 != null">
+				#{grpno1},
+			</if>
+			<if test="server != null">
+				#{server},
+			</if>
+			<if test="amount1 != null">
+				#{amount1},
+			</if>
+			<if test="rvsamount1 != null">
+				#{rvsamount1},
+			</if>
+			<if test="amount2 != null">
+				#{amount2},
+			</if>
+			<if test="rvsamount2 != null">
+				#{rvsamount2},
+			</if>
+			<if test="amount3 != null">
+				#{amount3},
+			</if>
+			<if test="rvsamount3 != null">
+				#{rvsamount3},
+			</if>
+			<if test="amount4 != null">
+				#{amount4},
+			</if>
+			<if test="rvsamount4 != null">
+				#{rvsamount4},
+			</if>
+			<if test="amountother != null">
+				#{amountother},
+			</if>
+			<if test="rvsamountother != null">
+				#{rvsamountother},
+			</if>
+			<if test="amountallday != null">
+				#{amountallday},
+			</if>
+			<if test="rvsamountallday != null">
+				#{rvsamountallday},
+			</if>
+			<if test="groupname != null">
+				#{groupname},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+	        parameterType="com.xb.domain.HcConsumeClctGrp">
+		<!--@mbg.generated-->
+		update dbo.hcConsumeClctGrp
+		<set>
+			<if test="server != null">
+				server = #{server},
+			</if>
+			<if test="amount1 != null">
+				Amount1 = #{amount1},
+			</if>
+			<if test="rvsamount1 != null">
+				RvsAmount1 = #{rvsamount1},
+			</if>
+			<if test="amount2 != null">
+				Amount2 = #{amount2},
+			</if>
+			<if test="rvsamount2 != null">
+				RvsAmount2 = #{rvsamount2},
+			</if>
+			<if test="amount3 != null">
+				Amount3 = #{amount3},
+			</if>
+			<if test="rvsamount3 != null">
+				RvsAmount3 = #{rvsamount3},
+			</if>
+			<if test="amount4 != null">
+				Amount4 = #{amount4},
+			</if>
+			<if test="rvsamount4 != null">
+				RvsAmount4 = #{rvsamount4},
+			</if>
+			<if test="amountother != null">
+				AmountOther = #{amountother},
+			</if>
+			<if test="rvsamountother != null">
+				RvsAmountOther = #{rvsamountother},
+			</if>
+			<if test="amountallday != null">
+				AmountAllDay = #{amountallday},
+			</if>
+			<if test="rvsamountallday != null">
+				RvsAmountAllDay = #{rvsamountallday},
+			</if>
+			<if test="groupname != null">
+				groupname = #{groupname},
+			</if>
+		</set>
+		where Adate = #{adate}
+		and GrpNo1 = #{grpno1}
+	</update>
+	<update id="updateByPrimaryKey"
+	        parameterType="com.xb.domain.HcConsumeClctGrp">
+		<!--@mbg.generated-->
+		update dbo.hcConsumeClctGrp
+		set server = #{server},
+		Amount1 = #{amount1},
+		RvsAmount1 = #{rvsamount1},
+		Amount2 = #{amount2},
+		RvsAmount2 = #{rvsamount2},
+		Amount3 = #{amount3},
+		RvsAmount3 = #{rvsamount3},
+		Amount4 = #{amount4},
+		RvsAmount4 = #{rvsamount4},
+		AmountOther = #{amountother},
+		RvsAmountOther = #{rvsamountother},
+		AmountAllDay = #{amountallday},
+		RvsAmountAllDay = #{rvsamountallday},
+		groupname = #{groupname}
+		where Adate = #{adate}
+		and GrpNo1 = #{grpno1}
+	</update>
+	<insert id="batchInsert"
+	        parameterType="map">
+		<!--@mbg.generated-->
+		insert into dbo.hcConsumeClctGrp
+		(Adate, GrpNo1, server, Amount1, RvsAmount1, Amount2, RvsAmount2, Amount3, RvsAmount3,
+		Amount4, RvsAmount4, AmountOther, RvsAmountOther, AmountAllDay, RvsAmountAllDay,
+		groupname)
+		values
+		<foreach collection="list"
+		         item="item"
+		         separator=",">
+			(#{item.adate}, #{item.grpno1}, #{item.server}, #{item.amount1}, #{item.rvsamount1},
+			#{item.amount2}, #{item.rvsamount2}, #{item.amount3}, #{item.rvsamount3}, #{item.amount4},
+			#{item.rvsamount4}, #{item.amountother}, #{item.rvsamountother}, #{item.amountallday},
+			#{item.rvsamountallday}, #{item.groupname})
+		</foreach>
+	</insert>
+	<select id="selectDeptDayTurnoverDetail"
+	        resultType="java.util.Map">
+		SELECT
+		groupname,ADate,Sum(AmountAllDay) as AmountAllDay , Sum(RvsAmountAllDay) as RvsAmountAllDay
+		FROM dbo.hcConsumeClctgrp
+		where ADATE between #{bgDate,jdbcType=VARCHAR} and #{edDate,jdbcType=VARCHAR}
+		Group by ADate,groupname
+	</select>
+	<select id="selectDeptDayTurnoverSummary"
+	        resultType="java.util.Map">
+		SELECT groupname,
+		left(adate, 7) as ADate,
+		Sum(AmountAllDay) as AmountAllDay,
+		Sum(RvsAmountAllDay) as RvsAmountAllDay
+		FROM dbo.hcConsumeClctgrp
+		where ADATE between #{bgDate,jdbcType=VARCHAR} and #{edDate,jdbcType=VARCHAR}
+		Group by left (adate,7),groupname
+	</select>
+	<select id="selectDeptDayTurnover"
+	        resultType="java.util.Map">
+		SELECT
+		groupname,
+		ADate,
+		Sum(AmountAllDay) as AmountAllDay,
+		Sum(RvsAmountAllDay) as RvsAmountAllDay
+		FROM
+		dbo.hcConsumeClctgrp
+		where ADATE between #{bgDate,jdbcType=VARCHAR} and #{edDate,jdbcType=VARCHAR}
+		Group by groupname,ADate
+		union (
+		SELECT
+		groupname,
+		left(adate, 7) as ADate,
+		Sum(AmountAllDay) as AmountAllDay,
+		Sum(RvsAmountAllDay) as RvsAmountAllDay
+		FROM
+		dbo.hcConsumeClctgrp
+		where ADATE between #{bgDate,jdbcType=VARCHAR} and #{edDate,jdbcType=VARCHAR}
+		Group by groupname,left (adate, 7)
+		)
+	</select>
+</mapper>
