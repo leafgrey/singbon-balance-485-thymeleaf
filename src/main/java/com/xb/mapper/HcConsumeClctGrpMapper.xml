@@ -285,6 +285,9 @@
 		Sum(RvsAmountAllDay) as RvsAmountAllDay
 		FROM dbo.hcConsumeClctgrp
 		where ADATE between #{bgDate,jdbcType=VARCHAR} and #{edDate,jdbcType=VARCHAR}
+		<if test="groupname != null">
+			and	groupname = #{groupname}
+		</if>
 		Group by left (adate,7),groupname
 	</select>
 	<select id="selectDeptDayTurnover"
@@ -297,6 +300,9 @@
 		FROM
 		dbo.hcConsumeClctgrp
 		where ADATE between #{bgDate,jdbcType=VARCHAR} and #{edDate,jdbcType=VARCHAR}
+		<if test="groupname != null">
+			and	groupname = #{groupname}
+		</if>
 		Group by groupname,ADate
 		union (
 		SELECT
@@ -307,7 +313,23 @@
 		FROM
 		dbo.hcConsumeClctgrp
 		where ADATE between #{bgDate,jdbcType=VARCHAR} and #{edDate,jdbcType=VARCHAR}
+		<if test="groupname != null">
+			and	groupname = #{groupname}
+		</if>
 		Group by groupname,left (adate, 7)
 		)
+	</select>
+	<select id="selectMaxMinBusinessVolume"
+	        resultType="java.util.Map">
+		select groupname, max(AmountAllDay) maxAmount, min(AmountAllDay) minAmount
+		from (SELECT groupname,
+		             Sum(AmountAllDay) as AmountAllDay
+		      FROM dbo.hcConsumeClctgrp
+		      where ADATE between #{bgDate,jdbcType=VARCHAR} and #{edDate,jdbcType=VARCHAR}
+		<if test="groupname != null">
+			and	groupname = #{groupname}
+		</if>
+		      Group by left(adate, 7), groupname) t
+		group by groupname
 	</select>
 </mapper>

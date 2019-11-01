@@ -50,14 +50,27 @@ public interface HcConsumeClctGrpMapper {
 	 * @param edDate String
 	 * @return List<Map<String,String>>
 	 */
-	List<Map<String,String>> selectDeptDayTurnoverDetail(@Param("bgDate") String bgDate, @Param("edDate") String edDate);
+	List<Map<String,String>> selectDeptDayTurnoverDetail(@Param("bgDate") String bgDate, @Param("edDate") String edDate,@Param("groupname") String groupname);
 	/**
+	 * 部门日营业统计
 	 * selectDeptDayTurnoverSummary
 	 * @param bgDate String
 	 * @param edDate String
 	 * @return List<Map<String,String>>
 	 */
-    List<Map<String,String>> selectDeptDayTurnoverSummary(@Param("bgDate") String bgDate, @Param("edDate") String edDate);
-
-	List<Map<String,String>> selectDeptDayTurnover(@Param("bgDate") String bgDate, @Param("edDate") String edDate);
+    List<Map<String,String>> selectDeptDayTurnoverSummary(@Param("bgDate") String bgDate, @Param("edDate") String edDate,@Param("groupname") String groupname);
+	/**
+	 * 部门日营业明细
+	 * @param bgDate
+	 * @param edDate
+	 * @return
+	 */
+	List<Map<String,String>> selectDeptDayTurnover(@Param("bgDate") String bgDate, @Param("edDate") String edDate,@Param("groupname") String groupname);
+	/**
+	 * 查询最大营业额
+	 * @param bgDate
+	 * @param edDate
+	 * @return
+	 */
+	List<Map<String,String>> selectMaxMinBusinessVolume(@Param("bgDate") String bgDate, @Param("edDate") String edDate,@Param("groupname") String groupname);
 }

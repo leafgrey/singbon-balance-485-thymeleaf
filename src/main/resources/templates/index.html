@@ -23,7 +23,7 @@
 	<![endif]-->
 	<script>
 		// 是否开启刷新记忆tab功能
-		// var is_remember = false;
+		var is_remember = false;
 	</script>
 </head>
 <body class="index">
@@ -84,7 +84,7 @@
 			<li>
 				<a href="javascript:void(0)">
 					<i class="iconfont left-nav-li" lay-tips="会员管理">&#xe6b8;</i>
-					<cite>会员管理</cite>
+					<cite>部门营业日统计查询</cite>
 					<i class="iconfont nav_right">&#xe697;</i></a>
 				<ul class="sub-menu">
 					<li>
@@ -98,8 +98,8 @@
 							<cite>数据图表</cite>
 						</a>
 					</li>
-					<li style="display:none">
-						<a onclick="xadmin.add_tab('人员信息','/memberList1/')">
+					<li style="display:block">
+						<a onclick="xadmin.add_tab('人员信息','/memberList1')">
 							<i class="iconfont">&#xe6a7;</i>
 							<cite>人员信息</cite>
 						</a>

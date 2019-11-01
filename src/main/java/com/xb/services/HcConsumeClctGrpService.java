@@ -12,7 +12,8 @@ public interface HcConsumeClctGrpService {
 	int updateByPrimaryKeySelective(HcConsumeClctGrp record);
 	int updateByPrimaryKey(HcConsumeClctGrp record);
 	int batchInsert(List<HcConsumeClctGrp> list);
-	List<Map<String,String>> selectDeptDayTurnover(String bgDate,String edDate);
-	List<Map<String,String>> selectDeptDayTurnoverSummary(String bgDate,String edDate);
-	List<Map<String,String>> selectDeptDayTurnoverDetail(String bgDate,String edDate);
+	List<Map<String,String>> selectDeptDayTurnover(String bgDate,String edDate,String groupname);
+	List<Map<String,String>> selectDeptDayTurnoverSummary(String bgDate,String edDate,String groupname);
+	List<Map<String,String>> selectDeptDayTurnoverDetail(String bgDate,String edDate,String groupname);
+	List<Map<String,String>> selectMaxMinBusinessVolume(String bgDate,String edDate,String groupname);
 }

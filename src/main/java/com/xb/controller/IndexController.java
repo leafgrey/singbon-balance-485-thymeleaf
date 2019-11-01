@@ -1,7 +1,10 @@
 package com.xb.controller;
+import com.alibaba.druid.support.json.JSONUtils;
 import com.xb.services.HcConsumeClctGrpService;
+import com.xb.utils.MySysStringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,24 +29,16 @@ public class IndexController {
 	@Resource
 	HcConsumeClctGrpService hcConsumeClctGrpService;
 	/**
-	 *
-	 * @param request
-	 * @param response
-	 * @param model
-	 * @return
+	 * 首页
 	 */
 	@RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index(HttpServletRequest request, HttpServletResponse response, Model model) {
-		System.out.println(request.getRequestURI());
-		System.out.println(request.getRemoteUser());
+		// System.out.println(request.getRequestURI())
+		// System.out.println(request.getRemoteUser())
 		return "index";
 	}
 	/**
-	 *
-	 * @param request
-	 * @param response
-	 * @param model
-	 * @return
+	 * 图表
 	 */
 	@RequestMapping(value = "/echartStaticData", method = {RequestMethod.GET, RequestMethod.POST})
 	public String welcome1(HttpServletRequest request, HttpServletResponse response, Model model) {
@@ -53,42 +48,54 @@ public class IndexController {
 	}
 	/**
 	 * 主信息页面
-	 * @param request
-	 * @param response
-	 * @param model
-	 * @return
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 * @param model Model
+	 * @return String
 	 */
 	@RequestMapping(value = "/welcome", method = {RequestMethod.GET, RequestMethod.POST})
 	public String welcome(HttpServletRequest request, HttpServletResponse response, Model model) {
-		List<Map<String, String>> deptDayTurnoverSummaryList = hcConsumeClctGrpService.selectDeptDayTurnoverSummary("2019-08-01 00:00:00", "2019-10-31 23:59:59");
-		List<Map<String, String>> deptDayTurnoverList = hcConsumeClctGrpService.selectDeptDayTurnover("2019-08-01 00:00:00", "2019-10-31 23:59:59");
-
+		//		for (String s : request.getParameterMap().keySet()) {
+		//			System.out.println(s + ":" + request.getParameter(s));
+		//		}
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		String bgDate = request.getParameter("bgDate");
+		String edDate = request.getParameter("edDate");
+		String deptName = request.getParameter("deptName");
+		if(StringUtils.isEmpty(bgDate)){
+			bgDate = MySysStringUtil.getMonthFirstDay();
+		}
+		if(StringUtils.isEmpty(edDate)){
+			edDate = MySysStringUtil.getMonthLastDay();
+		}
+		System.out.println(bgDate);
+		System.out.println(edDate);
+		System.out.println(deptName);
+		List<Map<String, String>> deptDayTurnoverSummaryList = hcConsumeClctGrpService.selectDeptDayTurnoverSummary(bgDate, edDate, deptName);
+		List<Map<String, String>> deptDayTurnoverList = hcConsumeClctGrpService.selectDeptDayTurnover(bgDate, edDate, deptName);
+		System.out.println(JSONUtils.toJSONString(deptDayTurnoverList));
+		List<Map<String, String>> maxMinBusinessVolumeList = hcConsumeClctGrpService.selectMaxMinBusinessVolume(bgDate, edDate, deptName);
 		model.addAttribute("deptDayTurnoverList", deptDayTurnoverList);
 		model.addAttribute("deptDayTurnoverSummaryList", deptDayTurnoverSummaryList);
+		model.addAttribute("maxMinBusinessVolumeList", maxMinBusinessVolumeList);
+		model.addAttribute("bgDate", bgDate);
+		model.addAttribute("edDate", edDate);
 		return "welcome/welcome";
 	}
 	/**
-	 *
-	 * @param request
-	 * @param response
-	 * @param model
-	 * @return
+	 * 暂未使用 备份的welcome页面
 	 */
 	@RequestMapping(value = "/back/welcome", method = {RequestMethod.GET, RequestMethod.POST})
 	public String backWelcome(HttpServletRequest request, HttpServletResponse response, Model model) {
 		return "back/welcome/welcome";
 	}
 	/**
-	 *
-	 * @param request
-	 * @param response
-	 * @param model
-	 * @return
+	 * 暂未使用 memberList1
 	 */
 	@RequestMapping(value = "/memberList1", method = {RequestMethod.GET, RequestMethod.POST})
 	public String memberList1(HttpServletRequest request, HttpServletResponse response, Model model) {
-		System.out.println(request.getRequestURI());
-		System.out.println(request.getRemoteUser());
-		return "/member/member-list1";
+		return "member/member-list1";
 	}
 }

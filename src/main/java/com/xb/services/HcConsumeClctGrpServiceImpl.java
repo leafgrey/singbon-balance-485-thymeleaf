@@ -42,15 +42,19 @@ public class HcConsumeClctGrpServiceImpl implements HcConsumeClctGrpService {
 		return hcConsumeClctGrpMapper.batchInsert(list);
 	}
 	@Override
-	public List<Map<String, String>> selectDeptDayTurnover(String bgDate, String edDate) {
-		return hcConsumeClctGrpMapper.selectDeptDayTurnover(bgDate,edDate);
+	public List<Map<String, String>> selectDeptDayTurnover(String bgDate, String edDate,String groupname) {
+		return hcConsumeClctGrpMapper.selectDeptDayTurnover(bgDate,edDate,groupname);
 	}
 	@Override
-	public List<Map<String, String>> selectDeptDayTurnoverSummary(String bgDate, String edDate) {
-		return hcConsumeClctGrpMapper.selectDeptDayTurnoverSummary(bgDate,edDate);
+	public List<Map<String, String>> selectDeptDayTurnoverSummary(String bgDate, String edDate,String groupname) {
+		return hcConsumeClctGrpMapper.selectDeptDayTurnoverSummary(bgDate,edDate,groupname);
 	}
 	@Override
-	public List<Map<String, String>> selectDeptDayTurnoverDetail(String bgDate, String edDate) {
-		return hcConsumeClctGrpMapper.selectDeptDayTurnoverDetail(bgDate,edDate);
+	public List<Map<String, String>> selectDeptDayTurnoverDetail(String bgDate, String edDate,String groupname) {
+		return hcConsumeClctGrpMapper.selectDeptDayTurnoverDetail(bgDate,edDate,groupname);
+	}
+	@Override
+	public List<Map<String, String>> selectMaxMinBusinessVolume(String bgDate, String edDate,String groupname) {
+		return hcConsumeClctGrpMapper.selectMaxMinBusinessVolume(bgDate,edDate,groupname);
 	}
 }
