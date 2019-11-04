@@ -57,4 +57,8 @@ public class HcConsumeClctGrpServiceImpl implements HcConsumeClctGrpService {
 	public List<Map<String, String>> selectMaxMinBusinessVolume(String bgDate, String edDate,String groupname) {
 		return hcConsumeClctGrpMapper.selectMaxMinBusinessVolume(bgDate,edDate,groupname);
 	}
+	@Override
+	public List<Map<String, String>> selectGroupList(String bgDate, String edDate, String groupname) {
+		return hcConsumeClctGrpMapper.selectGroupList(bgDate, edDate, groupname);
+	}
 }

@@ -27,9 +27,9 @@ LAY_EXCEL = {
   /**
    * 导出Excel并弹出下载框，具体使用方法和范围请参考文档
    * @param data object
-   * @param  {[type]} filename [description]
-   * @param  {[type]} type     [description]
-   * @param  {[type]} opt      [description]
+   * @param  {string} filename [description]
+   * @param  {string} type     [description]
+   * @param  {string} opt      [description]
    * @return {[type]}          [description]
    */
   exportExcel : function(data, filename, type, opt) {

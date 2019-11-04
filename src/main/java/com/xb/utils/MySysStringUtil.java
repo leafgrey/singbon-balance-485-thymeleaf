@@ -405,96 +405,105 @@ public class MySysStringUtil {
 	/**
 	 * 姓名简拼
 	 */
-	public static String toJP(String c) throws UnsupportedEncodingException {
+	public static String getJianPin(String c) {
 		char[] chars = c.toCharArray();
 		StringBuilder sb = new StringBuilder("");
 		for (char aChar : chars) {
-			sb.append(getJP(aChar));
+			sb.append(getJianPin(aChar));
 		}
 		return sb.toString().toUpperCase();
 	}
 	/**
 	 * 获取简拼
 	 */
-	private static String getJP(char c) throws UnsupportedEncodingException {
-		byte[] array = String.valueOf(c).getBytes("gbk");
-		if(array.length < 2) {
+	private static String getJianPin(char c) {
+		byte[] array = new byte[0];
+		try {
+			array = String.valueOf(c).getBytes("gbk");
+			if(array.length < 2) {
+				return String.valueOf(c);
+			}
+			int i = (short) (array[0] + 256) * 256 + ((short) (array[1] + 256));
+			if(i < 0xB0A1) {
+				return String.valueOf(c);
+			}
+			if(i < 0xB0C5) {
+				return "a";
+			}
+			if(i < 0xB2C1) {
+				return "b";
+			}
+			if(i < 0xB4EE) {
+				return "c";
+			}
+			if(i < 0xB6EA) {
+				return "d";
+			}
+			if(i < 0xB7A2) {
+				return "e";
+			}
+			if(i < 0xB8C1) {
+				return "f";
+			}
+			if(i < 0xB9FE) {
+				return "g";
+			}
+			if(i < 0xBBF7) {
+				return "h";
+			}
+			if(i < 0xBFA6) {
+				return "j";
+			}
+			if(i < 0xC0AC) {
+				return "k";
+			}
+			if(i < 0xC2E8) {
+				return "l";
+			}
+			if(i < 0xC4C3) {
+				return "m";
+			}
+			if(i < 0xC5B6) {
+				return "n";
+			}
+			if(i < 0xC5BE) {
+				return "o";
+			}
+			if(i < 0xC6DA) {
+				return "p";
+			}
+			if(i < 0xC8BB) {
+				return "q";
+			}
+			if(i < 0xC8F6) {
+				return "r";
+			}
+			if(i < 0xCBFA) {
+				return "s";
+			}
+			if(i < 0xCDDA) {
+				return "t";
+			}
+			if(i < 0xCEF4) {
+				return "w";
+			}
+			if(i < 0xD1B9) {
+				return "x";
+			}
+			if(i < 0xD4D1) {
+				return "y";
+			}
+			if(i < 0xD7FA) {
+				return "z";
+			}
 			return String.valueOf(c);
 		}
-		int i = (short) (array[0] - '\0' + 256) * 256 + ((short) (array[1] - '\0' + 256));
-		if(i < 0xB0A1) {
-			return String.valueOf(c);
+		catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return null;
 		}
-		if(i < 0xB0C5) {
-			return "a";
-		}
-		if(i < 0xB2C1) {
-			return "b";
-		}
-		if(i < 0xB4EE) {
-			return "c";
-		}
-		if(i < 0xB6EA) {
-			return "d";
-		}
-		if(i < 0xB7A2) {
-			return "e";
-		}
-		if(i < 0xB8C1) {
-			return "f";
-		}
-		if(i < 0xB9FE) {
-			return "g";
-		}
-		if(i < 0xBBF7) {
-			return "h";
-		}
-		if(i < 0xBFA6) {
-			return "j";
-		}
-		if(i < 0xC0AC) {
-			return "k";
-		}
-		if(i < 0xC2E8) {
-			return "l";
-		}
-		if(i < 0xC4C3) {
-			return "m";
-		}
-		if(i < 0xC5B6) {
-			return "n";
-		}
-		if(i < 0xC5BE) {
-			return "o";
-		}
-		if(i < 0xC6DA) {
-			return "p";
-		}
-		if(i < 0xC8BB) {
-			return "q";
-		}
-		if(i < 0xC8F6) {
-			return "r";
-		}
-		if(i < 0xCBFA) {
-			return "s";
-		}
-		if(i < 0xCDDA) {
-			return "t";
-		}
-		if(i < 0xCEF4) {
-			return "w";
-		}
-		if(i < 0xD1B9) {
-			return "x";
-		}
-		if(i < 0xD4D1) {
-			return "y";
-		}
-		if(i < 0xD7FA) {
-			return "z";
-		}
-		return String.valueOf(c);
+
+
 	}
 	/**
 	 * 获取水控时间段hex

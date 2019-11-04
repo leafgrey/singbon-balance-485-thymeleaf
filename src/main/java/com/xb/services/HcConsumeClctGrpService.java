@@ -16,4 +16,5 @@ public interface HcConsumeClctGrpService {
 	List<Map<String,String>> selectDeptDayTurnoverSummary(String bgDate,String edDate,String groupname);
 	List<Map<String,String>> selectDeptDayTurnoverDetail(String bgDate,String edDate,String groupname);
 	List<Map<String,String>> selectMaxMinBusinessVolume(String bgDate,String edDate,String groupname);
+	List<Map<String,String>> selectGroupList(String bgDate, String edDate,String groupname);
 }
