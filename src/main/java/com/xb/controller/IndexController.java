@@ -33,8 +33,6 @@ public class IndexController {
 	 */
 	@RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
 	public String index(HttpServletRequest request, HttpServletResponse response, Model model) {
-		// System.out.println(request.getRequestURI())
-		// System.out.println(request.getRemoteUser())
 		return "index";
 	}
 	/**
@@ -42,8 +40,6 @@ public class IndexController {
 	 */
 	@RequestMapping(value = "/echartStaticData", method = {RequestMethod.GET, RequestMethod.POST})
 	public String welcome1(HttpServletRequest request, HttpServletResponse response, Model model) {
-		System.out.println(request.getRequestURI());
-		System.out.println(request.getRemoteUser());
 		return "chart/echartStaticData";
 	}
 	/**
@@ -58,24 +54,20 @@ public class IndexController {
 		//		for (String s : request.getParameterMap().keySet()) {
 		//			System.out.println(s + ":" + request.getParameter(s));
 		//		}
-		System.out.println();
-		System.out.println();
-		System.out.println();
 		String bgDate = request.getParameter("bgDate");
 		String edDate = request.getParameter("edDate");
 		String deptName = request.getParameter("deptName");
-		if(StringUtils.isEmpty(bgDate)){
+		if(StringUtils.isEmpty(bgDate)) {
 			bgDate = MySysStringUtil.getMonthFirstDay();
 		}
-		if(StringUtils.isEmpty(edDate)){
+		if(StringUtils.isEmpty(edDate)) {
 			edDate = MySysStringUtil.getMonthLastDay();
 		}
-		System.out.println(bgDate);
-		System.out.println(edDate);
-		System.out.println(deptName);
+		if(StringUtils.isEmpty(deptName)) {
+			deptName = null;
+		}
 		List<Map<String, String>> deptDayTurnoverSummaryList = hcConsumeClctGrpService.selectDeptDayTurnoverSummary(bgDate, edDate, deptName);
 		List<Map<String, String>> deptDayTurnoverList = hcConsumeClctGrpService.selectDeptDayTurnover(bgDate, edDate, deptName);
-		System.out.println(JSONUtils.toJSONString(deptDayTurnoverList));
 		List<Map<String, String>> maxMinBusinessVolumeList = hcConsumeClctGrpService.selectMaxMinBusinessVolume(bgDate, edDate, deptName);
 		model.addAttribute("deptDayTurnoverList", deptDayTurnoverList);
 		model.addAttribute("deptDayTurnoverSummaryList", deptDayTurnoverSummaryList);
