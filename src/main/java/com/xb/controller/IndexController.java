@@ -1,5 +1,6 @@
 package com.xb.controller;
 import com.alibaba.druid.support.json.JSONUtils;
+import com.google.common.collect.Maps;
 import com.xb.services.HcConsumeClctGrpService;
 import com.xb.utils.MySysStringUtil;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /***
@@ -60,7 +64,7 @@ public class IndexController {
 		String deptName = request.getParameter("deptName");
 		if(StringUtils.isEmpty(bgDate)) {
 			bgDate = MySysStringUtil.getMonthFirstDay();
-			bgDate = "2019-09-01 00:00:00";
+			bgDate = "2019-10-01 00:00:00";
 		}
 		if(StringUtils.isEmpty(edDate)) {
 			edDate = MySysStringUtil.getMonthLastDay();
@@ -69,11 +73,23 @@ public class IndexController {
 			deptName = null;
 		}
 		// 月最大最小
-		List<Map<String, String>> groupNameList = hcConsumeClctGrpService.selectGroupList(bgDate, edDate, deptName);
-		for (Map<String, String> m : groupNameList) {
-			m.put("groupname",m.get("groupname").trim().replace(" ",""));
-			m.put("jianpin",MySysStringUtil.getJianPin(m.get("groupname")));
-
+		List<Map<Object, Object>> groupNameList = hcConsumeClctGrpService.selectGroupList(bgDate, edDate, deptName);
+		List<Map<Object,Object>> deptDayTurnoverLists = new ArrayList<>();
+		for (Map<Object, Object> m : groupNameList) {
+			m.put("groupname", m.get("groupname").toString().trim().replace(" ", ""));
+			m.put("jianpin", MySysStringUtil.getJianPin(m.get("groupname").toString()));
+			List<Map<String, String>> t = hcConsumeClctGrpService.selectDeptDayTurnover(bgDate, edDate, m.get("groupname").toString());
+			BigDecimal allFare = new BigDecimal(0);
+			for (Map mm : t) {
+				allFare = allFare.add(new BigDecimal(mm.get("AmountAllDay").toString()));
+			}
+			Map<String, String> allFaremap = new HashMap<>();
+			allFaremap.put("groupname", "");
+			allFaremap.put("ADate", "汇总");
+			allFaremap.put("AmountAllDay", allFare.toString());
+			t.add(allFaremap);
+			m.put("listInfo", t);
+			deptDayTurnoverLists.add(m);
 		}
 		// 月最大最小
 		List<Map<String, String>> maxMinBusinessVolumeList = hcConsumeClctGrpService.selectMaxMinBusinessVolume(bgDate, edDate, deptName);
@@ -82,13 +98,13 @@ public class IndexController {
 		// 月明细
 		List<Map<String, String>> deptDayTurnoverList = hcConsumeClctGrpService.selectDeptDayTurnover(bgDate, edDate, deptName);
 		String deptDayTurnoverJsonStr = JSONUtils.toJSONString(deptDayTurnoverList);
-		System.out.println("deptDayTurnoverJsonStr:" + deptDayTurnoverJsonStr);
+		// System.out.println("deptDayTurnoverJsonStr:" + deptDayTurnoverJsonStr);
 		model.addAttribute("deptDayTurnoverList", deptDayTurnoverList);
 		model.addAttribute("deptDayTurnoverSummaryList", deptDayTurnoverSummaryList);
 		model.addAttribute("maxMinBusinessVolumeList", maxMinBusinessVolumeList);
 		model.addAttribute("deptDayTurnoverJsonStr", deptDayTurnoverJsonStr);
 		model.addAttribute("groupNameList", groupNameList);
-		System.out.println(groupNameList);
+		model.addAttribute("deptDayTurnoverLists", deptDayTurnoverLists);
 		model.addAttribute("bgDate", bgDate);
 		model.addAttribute("edDate", edDate);
 		return "welcome/welcome";
@@ -104,7 +120,7 @@ public class IndexController {
 			String deptName = request.getParameter("deptName");
 			if(StringUtils.isEmpty(bgDate)) {
 				// bgDate = MySysStringUtil.getMonthFirstDay()
-				bgDate = "2019-09-01 00:00:00";
+				bgDate = "2019-10-01 00:00:00";
 			}
 			if(StringUtils.isEmpty(edDate)) {
 				edDate = MySysStringUtil.getMonthLastDay();
@@ -118,16 +134,16 @@ public class IndexController {
 			// 月明细
 			List<Map<String, String>> deptDayTurnoverList = hcConsumeClctGrpService.selectDeptDayTurnover(bgDate, edDate, deptName);
 			System.out.println("deptDayTurnoverList:" + deptDayTurnoverList);
-			//			BigDecimal allFare = new BigDecimal(0);
-			//			for (Map m:deptDayTurnoverList){
-			//				allFare = allFare.add(new BigDecimal(m.get("AmountAllDay").toString()));
-			//			}
-			//			System.out.println(allFare);
-			//			Map<String,String> allFaremap = new HashMap<>();
-			//			allFaremap.put("groupname","汇总");
-			//			allFaremap.put("ADate","");
-			//			allFaremap.put("AmountAllDay",allFare.toString());
-			//			deptDayTurnoverList.add(allFaremap);
+			BigDecimal allFare = new BigDecimal(0);
+			for (Map m : deptDayTurnoverList) {
+				allFare = allFare.add(new BigDecimal(m.get("AmountAllDay").toString()));
+			}
+			System.out.println(allFare);
+			Map<String, String> allFaremap = new HashMap<>();
+			allFaremap.put("groupname", "汇总");
+			allFaremap.put("ADate", "");
+			allFaremap.put("AmountAllDay", allFare.toString());
+			deptDayTurnoverList.add(allFaremap);
 			System.out.println("shuju:" + deptDayTurnoverList.size());
 			String deptDayTurnoverJsonStr = JSONUtils.toJSONString(deptDayTurnoverList);
 			try {

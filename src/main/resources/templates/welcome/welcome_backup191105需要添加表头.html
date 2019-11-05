@@ -81,29 +81,13 @@
 				<!--						<span class="layui-badge layui-bg-black">餐厅营业日统计</span>-->
 				<!--					</script>-->
 				<!--				</div>-->
-				<div class="layui-card-body" th:each="info,infoStat : ${deptDayTurnoverLists}">
-					<div style="text-align:right">
-						<button class="layui-btn" th:name="${info.jianpin}" lay-filter="export" onclick="printTable(this)">
-							<i class="layui-icon">&#xe615;打印</i>
-						</button>
-					</div>
-					<table class="layui-table" th:id="${info.jianpin}">
-						<thead>
-						<tr>
-							<td colspan="2" style="text-align:center;font-family:'Britannic Bold',sans-serif;font-size:large" th:text="${info.groupname}"></td>
-						</tr>
-						<tr>
-							<td>日期</td>
-							<td>金额</td>
-						</tr>
-						</thead>
-						<tbody>
-						<tr th:each="i,it : ${info.listInfo}">
-							<td th:text="${i.ADate}"></td>
-							<td th:text="${i.AmountAllDay}"></td>
-						</tr>
-						</tbody>
+				<div class="layui-card-body" th:each="info,infoStat : ${groupNameList}">
+					<table class="layui-hide" th:id="${info.jianpin}" th:lay-filter="${info.jianpin}">
+						<tr><td rowspan="3">12313</td></tr>
 					</table>
+					<!--					<script type="text/html" th:id="(${info.jianpin})+_bar">-->
+					<!--						<span class="layui-badge layui-bg-black" th:text="(${info.groupname})+营业日统计"></span>-->
+					<!--					</script>-->
 				</div>
 			</div>
 		</div>
@@ -112,11 +96,10 @@
 <script src="/x-admin/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <!--<script src="/x-admin/lib/jquery/jquery-1.12.4.min.js" type="text/javascript"></script>-->
 <script src="/x-admin/lib/layui/layui.js"></script>
-<!--<script src="/x-admin/lib/layui/lay/modules/layer.js"></script>-->
+<script src="/x-admin/lib/layui/lay/modules/layer.js"></script>
 <script src="/x-admin/lib/layui-ext-lib/excel.min.js"></script>
 <script src="/x-admin/js/xadmin.js" type="text/javascript"></script>
 <script src="/x-admin/js/date-formatter.js" type="text/javascript"></script>
-<script src="/x-admin/lib/jquery/jQuery.print-1.6.0.js" type="text/javascript"></script>
 <script type="text/javascript">
 	layui.use('laydate',
 		function(){
@@ -142,10 +125,14 @@
 		},1000);
 		// let data = [[${deptDayTurnoverJsonStr}]];
 		// console.log(data);
-		// getData();
+		getData();
 	});
 </script>
 <script th:inline="javascript">
+	// function getData(){
+	// 	renderZaoTangListData('澡堂','zaotang');
+	// 	renderZaoTangListData('食堂','shitang');
+	// }
 	let dataDept = [[${groupNameList}]];
 	function getData(){
 		console.log(dataDept);
@@ -162,18 +149,29 @@
 			const table = layui.table;
 			table.render({
 				elem:'#'+eleId,
-				// url:'/welcomeListJson?bgDate='+bgDate+'&edDate='+edDate+'&deptName='+deptName,
+				url:'/welcomeListJson?bgDate='+bgDate+'&edDate='+edDate+'&deptName='+deptName,
 				toolbar:'#'+eleId+'_bar',
 				defaultToolbar:['filter','exports','print'],
+				title:deptName+'营业日统计',
+				parseData:function(e){
+					return {
+						"code":0,
+						"msg":"",
+						"count":e.length,
+						"data":e,
+					}
+				},
+				page:false,
+				totalRow:true,
+				cols:[
+					[
+						{field:'groupname',title:'部门',fixed:'left',sort:true,totalRowText:'合计'},
+						{field:'ADate',title:'日期',sort:true},
+						{field:'AmountAllDay',title:'金额(元￥)',sort:true,totalRow:true}
+					]
+				],
 			});
 		});
-	}
-	function printTable(obj){
-		let printId = obj.getAttribute('name');
-		console.log('--------------');
-		console.log(printId);
-		console.log('--------------');
-		$("#"+printId).print(/*options*/);
 	}
 </script>
 </body>

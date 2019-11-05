@@ -74,5 +74,5 @@ public interface HcConsumeClctGrpMapper {
 	 */
 	List<Map<String,String>> selectMaxMinBusinessVolume(@Param("bgDate") String bgDate, @Param("edDate") String edDate,@Param("groupname") String groupname);
 
-	List<Map<String,String>> selectGroupList(@Param("bgDate") String bgDate, @Param("edDate") String edDate,@Param("groupname") String groupname);
+	List<Map<Object,Object>> selectGroupList(@Param("bgDate") String bgDate, @Param("edDate") String edDate,@Param("groupname") String groupname);
 }
