@@ -173,7 +173,23 @@
 		console.log('--------------');
 		console.log(printId);
 		console.log('--------------');
-		$("#"+printId).print(/*options*/);
+		// $("#myElementId").print({
+		// 	globalStyles: true,
+		// 	mediaPrint: false,
+		// 	stylesheet: null,
+		// 	noPrintSelector: ".no-print",
+		// 	iframe: true,
+		// 	append: null,
+		// 	prepend: null,
+		// 	manuallyCopyFormValues: true,
+		// 	deferred: $.Deferred(),
+		// 	timeout: 750,
+		// 	title: null,
+		// 	doctype: '<!doctype html>'
+		// });
+		$("#"+printId).print({
+			title: null,
+		});
 	}
 </script>
 </body>
