@@ -1,0 +1,1 @@
+java -jar singbon-balance-485-thymeleaf-0.0.1.jar
