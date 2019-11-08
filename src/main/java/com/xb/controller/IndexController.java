@@ -64,7 +64,7 @@ public class IndexController {
 		String deptName = request.getParameter("deptName");
 		if(StringUtils.isEmpty(bgDate)) {
 			bgDate = MySysStringUtil.getMonthFirstDay();
-			bgDate = "2019-10-01 00:00:00";
+			// bgDate = "2019-10-01 00:00:00";
 		}
 		if(StringUtils.isEmpty(edDate)) {
 			edDate = MySysStringUtil.getMonthLastDay();
@@ -119,8 +119,8 @@ public class IndexController {
 			String edDate = request.getParameter("edDate");
 			String deptName = request.getParameter("deptName");
 			if(StringUtils.isEmpty(bgDate)) {
-				// bgDate = MySysStringUtil.getMonthFirstDay()
-				bgDate = "2019-10-01 00:00:00";
+				bgDate = MySysStringUtil.getMonthFirstDay();
+				// bgDate = "2019-10-01 00:00:00";
 			}
 			if(StringUtils.isEmpty(edDate)) {
 				edDate = MySysStringUtil.getMonthLastDay();
